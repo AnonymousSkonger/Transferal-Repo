@@ -1,0 +1,8 @@
+<h1>Employee Details</h1>
+<p>Employee Number: {{ employee.employeeNumber }}</p>
+<p>Name: {{ employee.name }}</p>
+<p>Surname: {{ employee.surname }}</p>
+<p>Email: {{ employee.email }}</p>
+<p>Phone Number: {{ employee.phoneNumber }}</p>
+<p>Salary: {{ employee.salary }}</p>
+<a href="{% url 'employees:employee_list' %}">Back to Employees</a>
