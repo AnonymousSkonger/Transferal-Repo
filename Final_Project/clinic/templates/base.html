@@ -4,33 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{% block title %}Clinic Appointment System{% endblock title %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li>
-                    <a href="{% url 'home' %}">Home</a>
-                </li>
-                <li>
-                    <a href="{% url 'about' %}">About</a>
-                </li>
-                <li>
-                    <a href="">Courses</a>
-                </li>
-                <li>
-                    <a href="">Blog</a>
-                </li>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <img src="{% static 'media/logo.webp' %}" alt="Clinic Logo" class="logo">
+                <span class="brand-title">CareClinic</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
         </nav>
     </header>
-    <main>
+
+    <main class="main-content">
         {% block content %} {% endblock content %}
     </main>
+
     <footer>
-        <p>@2026 Coding Acadamy</p>
+        <p>&copy; 2026 Coding Academy. All rights reserved.</p>
     </footer>
 </body>
 </html>

@@ -1,15 +1,41 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block title %}About - Clinic Management System{% endblock title %}
 
-<div class="about-container">
-    <h1>Welcome to Coding Academy</h1>
-    <p>Coding Academy is the academy for learning various courses that involves programming computers</p>
-    <p>We offer various courses sach as </p>
-    <ul>
-        <li>Coding For Automation using Python</li>
-        <li>Software Engineering using C & C++</li>
-        <li>FullStack Web Development using HTML, CSS, JS, PYTHON and MYSQL</li>
-    </ul>
+{% block content %}
+<div class="content-container">
+    <div class="card">        
+        <!-- Main Heading -->
+        <h2>Solving Clinic Flow, One Appointment at a Time</h2>
+        <p class="hero-subtitle">
+            Designed to eliminate the chaos of hospital and clinic scheduling, ensuring every patient reaches the right specialist instantly—especially when seconds matter.
+        </p>
+
+        <!-- Problem & Solution Grid -->
+        <div class="features-grid" style="margin-top: 2rem;">
+            <div class="feature-card">
+                <h3>Why we do it.</h3>
+                <p>Clinics and hospitals frequently struggle to route patients to the correct doctor efficiently, creating bottlenecks during critical or life-threatening emergencies.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Our Solution?</h3>
+                <p>A centralized, Django-powered platform where medical staff seamlessly record ailments, prioritize urgent cases, and match patients to the exact specialty they need.</p>
+            </div>
+        </div>
+
+        <!-- Role-Based Features -->
+        <h3 style="margin-top: 2.5rem; color: #03045e;">Built for Every Medical Workflow</h3>
+        <ul style="list-style: none; padding: 0; margin-top: 1rem; display: grid; gap: 1rem;">
+            <li style="background: #f8f9fa; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                <strong>Receptionists:</strong> Fast patient record management, seamless specialty matching, and instant emergency flagging.
+            </li>
+            <li style="background: #f8f9fa; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #10b981;">
+                <strong>Doctors:</strong> Real-time visibility into expected daily patient lists, priority alerts, and live visit status updates.
+            </li>
+            <li style="background: #f8f9fa; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #2d1b4e;">
+                <strong>Patients:</strong> Clear access to assigned doctor information, appointment dates, and scheduled arrival times.
+            </li>
+        </ul>
+    </div>
 </div>
 {% endblock content %}

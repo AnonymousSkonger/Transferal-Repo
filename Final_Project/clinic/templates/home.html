@@ -1,6 +1,44 @@
 {% extends 'base.html' %}
 
+{% block title %}CareClinic - Clinic Management System{% endblock title %}
+
 {% block content %}
-<h1>Welcome to Coding Academy</h1>
-<img src="../static/media/image1.jpg" alt="image for home">
+<div class="hero-section">
+    <div class="hero-card">
+        <!-- Main Headline -->
+        <h1>No. 1 Clinic Management System for Small &amp; Large Clinics</h1>
+
+        <!-- Supporting Subtitle Text -->
+        <p class="hero-subtitle">
+            <strong>CareClinic</strong> is the essential upgrade your medical practice needs. Designed for maximum speed, accuracy, and effortless patient routing.
+        </p>
+
+        <!-- Highlight Tagline -->
+        <p class="highlight-text" style="color: #0077b6; font-weight: 600; margin-bottom: 2rem;">
+            15+ Specialities &bull; All-In-One Solution &bull; POPIA Compliant
+        </p>
+
+        <!-- Scannable Feature Cards -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Lightning Fast</h3>
+                <p>Built for busy receptionists to add, update, and manage patient records instantly without workflow delays.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Urgent Care Alerts</h3>
+                <p>Life-threatening cases are visually flagged and prioritized so doctors instantly recognize critical emergencies.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Smart Matching</h3>
+                <p>Seamlessly align patient symptoms and ailments with the correct doctor's field of specialty.</p>
+            </div>
+        </div>
+
+        <!-- Call To Action Buttons -->
+        <div class="cta-buttons" style="margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="{% url 'contact' %}" class="btn btn-primary" style="background: #2d1b4e; color: white; padding: 0.75rem 1.75rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s;">Book a Demo</a>
+            <a href="{% url 'contact' %}" class="btn btn-secondary" style="border: 2px solid #2d1b4e; color: #2d1b4e; padding: 0.75rem 1.75rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s;">Contact Us</a>
+        </div>
+    </div>
+</div>
 {% endblock content %}

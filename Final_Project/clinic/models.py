@@ -67,7 +67,7 @@ class Patient(models.Model):
     password = models.CharField(max_length=128, null=False, blank=False)
     isActive = models.BooleanField(default=True)
     dateRegistered = models.DateTimeField(auto_now_add=True)
-    ailment = models.CharField(max_length=500)
+    ailment = models.TextField(blank=False)
 
     def __str__(self):
         return f"{self.surname} {self.name}"
@@ -101,6 +101,7 @@ class Doctor(models.Model):
         )
     password = models.CharField(max_length=128, null=False, blank=False)
     isActive = models.BooleanField(default=True)
+    profession = models.CharField(max_length=100)
     dateRegistered = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

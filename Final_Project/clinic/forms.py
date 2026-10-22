@@ -45,6 +45,7 @@ class DoctorForm(forms.ModelForm):
             'age',
             'salary',
             'dateHired',
+            'profession',
             'isActive',
         ]
 
