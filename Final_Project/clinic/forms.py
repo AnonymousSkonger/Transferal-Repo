@@ -2,20 +2,23 @@ from django import forms
 from .models import Receptionist, Patient, Doctor, Appointment
 
 
-class RecpetionistForm(forms.ModelForm):
+class ReceptionistForm(forms.ModelForm):
     class Meta:
         model = Receptionist
         fields = [
             'name',
             'surname',
             'id_number',
+            'age',
             'email',
             'phoneNumber',
-            'age',
-            'salary',
-            'dateHired',
+            'password',
             'isActive',
         ]
+        widgets = {
+            'password': forms.PasswordInput(),
+        }
+
 
 class PatientForm(forms.ModelForm):
     class Meta:
@@ -24,14 +27,17 @@ class PatientForm(forms.ModelForm):
             'name',
             'surname',
             'id_number',
+            'age',
             'email',
             'phoneNumber',
-            'age',
-            'salary',
-            'dateHired',
+            'password',
             'isActive',
             'ailment',
         ]
+        widgets = {
+            'password': forms.PasswordInput(),
+        }
+
 
 class DoctorForm(forms.ModelForm):
     class Meta:
@@ -40,20 +46,27 @@ class DoctorForm(forms.ModelForm):
             'name',
             'surname',
             'id_number',
+            'age',
             'email',
             'phoneNumber',
-            'age',
-            'salary',
-            'dateHired',
-            'profession',
+            'password',
             'isActive',
+            'profession',
         ]
+        widgets = {
+            'password': forms.PasswordInput(),
+        }
+
 
 class AppointmentForm(forms.ModelForm):
     class Meta:
+        model = Appointment
+        fields = [
+            'patient_id',
+            'doctor_id',
+        ]
+    class Meta:
             model = Appointment
             fields = [
-                'patient_id',
                 'doctor_id',
-                'appointment_entered',
             ]

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Book Appointment - CareClinic{% endblock title %}
+
+{% block content %}
+<div class="content-container" style="max-width: 900px; margin: 2rem auto;">
+    <div class="card booking-card" style="background: rgba(255, 255, 255, 0.98); padding: 3rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);">
+        <h2 style="color: #03045e; margin-bottom: 0.5rem; font-size: 1.8rem; text-align: center;">Clinic Appointment &amp; Patient Booking</h2>
+        <p style="text-align: center; color: #64748b; margin-bottom: 2.5rem; font-size: 1.05rem;">
+            Complete the patient details, doctor assignment, and appointment schedule below.
+        </p>
+        
+        <form method="post" class="booking-form">
+            {% csrf_token %}
+
+            <!-- Patient Information Section -->
+            <h3 style="color: #2d1b4e; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">1. Patient Information</h3>
+            <div class="form-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-bottom: 2rem;">
+                {{ patient_form.non_field_errors }}
+                {% for field in patient_form %}
+                    <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem; {% if forloop.last %}grid-column: span 2;{% endif %}">
+                        <label for="{{ field.id_for_label }}" style="font-weight: 600; color: #1e293b; font-size: 0.9rem;">
+                            {{ field.label }}<span style="color: #e11d48; margin-left: 2px;">*</span>
+                        </label>
+                        {{ field }}
+                        {% for error in field.errors %}
+                            <span style="color: #ef4444; font-size: 0.8rem;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Doctor & Appointment Section -->
+            <h3 style="color: #2d1b4e; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">2. Appointment Details</h3>
+            <div class="form-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-bottom: 2rem;">
+                {{ appointment_form.non_field_errors }}
+                {% for field in appointment_form %}
+                    <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem; grid-column: span 2;">
+                        <label for="{{ field.id_for_label }}" style="font-weight: 600; color: #1e293b; font-size: 0.9rem;">
+                            {{ field.label }}<span style="color: #e11d48; margin-left: 2px;">*</span>
+                        </label>
+                        {{ field }}
+                        {% for error in field.errors %}
+                            <span style="color: #ef4444; font-size: 0.8rem;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Submit Button -->
+            <div style="margin-top: 2.5rem; text-align: center;">
+                <button type="submit" class="btn btn-primary" style="background: #2d1b4e; color: white; padding: 0.9rem 2.5rem; border: none; border-radius: 8px; font-weight: 600; font-size: 1.05rem; cursor: pointer; box-shadow: 0 4px 12px rgba(45, 27, 78, 0.2); transition: background 0.3s;">
+                    Confirm &amp; Book Appointment
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

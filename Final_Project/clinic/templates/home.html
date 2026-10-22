@@ -1,44 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}CareClinic - Clinic Management System{% endblock title %}
 
 {% block content %}
 <div class="hero-section">
-    <div class="hero-card">
-        <!-- Main Headline -->
-        <h1>No. 1 Clinic Management System for Small &amp; Large Clinics</h1>
+    <div class="hero-card" style="display: flex; align-items: center; justify-content: space-between; gap: 2.5rem; text-align: left; padding: 3rem;">
+        
+        <!-- Left Side: Text Content & Actions -->
+        <div class="hero-text-content" style="flex: 1; max-width: 600px;">
+            <!-- Main Headline -->
+            <h1 style="font-size: 2.5rem; color: #03045e; margin-bottom: 1.25rem; line-height: 1.2;">
+                No. 1 Clinic Management System for Small &amp; Large Clinics
+            </h1>
+            
+            <!-- Supporting Subtitle Text -->
+            <p class="hero-subtitle" style="font-size: 1.15rem; color: #4a5568; margin-bottom: 1.25rem; line-height: 1.6;">
+                <strong>CareClinic</strong> is the essential upgrade your medical practice needs. Designed for maximum speed, accuracy, and effortless patient routing.
+            </p>
 
-        <!-- Supporting Subtitle Text -->
-        <p class="hero-subtitle">
-            <strong>CareClinic</strong> is the essential upgrade your medical practice needs. Designed for maximum speed, accuracy, and effortless patient routing.
-        </p>
+            <!-- Highlight Tagline -->
+            <p class="highlight-text" style="color: #0077b6; font-weight: 700; font-size: 1.05rem; margin-bottom: 2rem;">
+                15+ Specialities &bull; All-In-One Solution &bull; POPIA Compliant
+            </p>
 
-        <!-- Highlight Tagline -->
-        <p class="highlight-text" style="color: #0077b6; font-weight: 600; margin-bottom: 2rem;">
-            15+ Specialities &bull; All-In-One Solution &bull; POPIA Compliant
-        </p>
-
-        <!-- Scannable Feature Cards -->
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>Lightning Fast</h3>
-                <p>Built for busy receptionists to add, update, and manage patient records instantly without workflow delays.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Urgent Care Alerts</h3>
-                <p>Life-threatening cases are visually flagged and prioritized so doctors instantly recognize critical emergencies.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Smart Matching</h3>
-                <p>Seamlessly align patient symptoms and ailments with the correct doctor's field of specialty.</p>
+            <!-- Call To Action Buttons -->
+            <div class="cta-buttons" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="{% url 'book' %}" class="btn btn-primary" style="background: #2d1b4e; color: #ffffff; padding: 0.85rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 12px rgba(45, 27, 78, 0.2); transition: background 0.3s;">Book a Demo</a>
+                <a href="{% url 'contact' %}" class="btn btn-secondary" style="border: 2px solid #2d1b4e; color: #2d1b4e; padding: 0.85rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.3s;">Contact Us</a>
             </div>
         </div>
 
-        <!-- Call To Action Buttons -->
-        <div class="cta-buttons" style="margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="{% url 'contact' %}" class="btn btn-primary" style="background: #2d1b4e; color: white; padding: 0.75rem 1.75rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s;">Book a Demo</a>
-            <a href="{% url 'contact' %}" class="btn btn-secondary" style="border: 2px solid #2d1b4e; color: #2d1b4e; padding: 0.75rem 1.75rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.3s;">Contact Us</a>
+        <!-- Right Side: Welcoming Image -->
+        <div class="hero-image-container" style="flex: 1; display: flex; justify-content: center; align-items: center;">
+            <img src="{% static 'media/welcome.jpg' %}" alt="Welcoming Doctor" style="width: 100%; max-width: 480px; height: auto; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); object-fit: cover;">
         </div>
+
     </div>
 </div>
 {% endblock content %}
