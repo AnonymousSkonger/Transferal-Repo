@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Doctor Portal - CareClinic{% endblock title %}
+
+{% block content %}
+<div class="content-container" style="max-width: 1000px; margin: 2rem auto;">
+    <div class="card" style="background: rgba(255, 255, 255, 0.98); padding: 2.5rem; border-radius: 16px;">
+        <h2 style="color: #03045e; margin-bottom: 0.25rem;">Doctor Portal</h2>
+        <p style="color: #64748b; margin-bottom: 2rem;">Welcome, <strong>{{ user_name }}</strong> (Speciality: {{ doctor.profession }})</p>
+
+        <h3 style="color: #2d1b4e; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">Expected Patients</h3>
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background: #f1f5f9; text-align: left;">
+                    <th style="padding: 10px;">Patient Name</th>
+                    <th style="padding: 10px;">Ailment / Reason</th>
+                    <th style="padding: 10px;">Scheduled Time</th>
+                    <th style="padding: 10px;">Priority Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appt in appointments %}
+                <tr style="border-bottom: 1px solid #e2e8f0; {% if appt.is_urgent %}background: #fee2e2;{% endif %}">
+                    <td style="padding: 10px;">{{ appt.patient_id.name }} {{ appt.patient_id.surname }}</td>
+                    <td style="padding: 10px;">{{ appt.patient_id.ailment }}</td>
+                    <td style="padding: 10px;">{{ appt.appointment_date }}</td>
+                    <td style="padding: 10px;">
+                        {% if appt.is_urgent %}
+                            <span style="background: #dc2626; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">URGENT</span>
+                        {% else %}
+                            <span style="background: #3b82f6; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.85rem;">Standard</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="4" style="padding: 15px; text-align: center; color: #64748b;">No patients currently assigned to you.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}

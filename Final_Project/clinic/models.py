@@ -110,4 +110,9 @@ class Doctor(models.Model):
 class Appointment(models.Model):
     patient_id = models.ForeignKey("Patient", verbose_name=("Appointment"), on_delete=models.CASCADE)
     doctor_id = models.ForeignKey("Doctor", verbose_name=("Appointment"), on_delete=models.CASCADE)
+    is_urgent = models.BooleanField(default=False, verbose_name="Mark as Urgent / Life-Threatening")
+    appointment_date = models.DateTimeField(null=True, blank=True, verbose_name="Appointment Date & Time")
     appointment_entered = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Appointment: {self.patient_id} with Dr. {self.doctor_id} ({'URGENT' if self.is_urgent else 'Normal'})"

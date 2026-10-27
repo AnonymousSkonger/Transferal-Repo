@@ -62,11 +62,10 @@ class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
         fields = [
-            'patient_id',
             'doctor_id',
+            'is_urgent',
         ]
-    class Meta:
-            model = Appointment
-            fields = [
-                'doctor_id',
-            ]
+
+class UnifiedLoginForm(forms.Form):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Enter your email address'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Enter your password'}))

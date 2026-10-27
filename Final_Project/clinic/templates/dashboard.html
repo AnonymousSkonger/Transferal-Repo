@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Receptionist Dashboard - CareClinic{% endblock title %}
+
+{% block content %}
+<div class="content-container" style="max-width: 1200px; margin: 2rem auto;">
+    <div class="card" style="background: rgba(255, 255, 255, 0.98); padding: 2.5rem; border-radius: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <div>
+                <h2 style="color: #03045e; margin-bottom: 0.25rem;">Receptionist Portal</h2>
+                <p style="color: #64748b;">Welcome back, <strong>{{ receptionist_name }}</strong></p>
+            </div>
+            <div>
+                <a href="{% url 'booking' %}" style="background: #10b981; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; margin-right: 1rem;">+ New Appointment</a>
+                <a href="{% url 'logout' %}" style="background: #ef4444; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600;">Logout</a>
+            </div>
+        </div>
+
+        <h3 style="color: #2d1b4e; margin-top: 2rem; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">Scheduled Appointments (Urgent Flagged First)</h3>
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem;">
+                <thead>
+                    <tr style="background: #f1f5f9; text-align: left;">
+                        <th style="padding: 10px;">Patient</th>
+                        <th style="padding: 10px;">Ailment</th>
+                        <th style="padding: 10px;">Assigned Doctor</th>
+                        <th style="padding: 10px;">Appointment Time</th>
+                        <th style="padding: 10px;">Status / Priority</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appt in appointments %}
+                    <tr style="border-bottom: 1px solid #e2e8f0; {% if appt.is_urgent %}background: #fee2e2;{% endif %}">
+                        <td style="padding: 10px;">{{ appt.patient_id.name }} {{ appt.patient_id.surname }}</td>
+                        <td style="padding: 10px;">{{ appt.patient_id.ailment }}</td>
+                        <td style="padding: 10px;">Dr. {{ appt.doctor_id.surname }} ({{ appt.doctor_id.profession }})</td>
+                        <td style="padding: 10px;">{{ appt.appointment_date }}</td>
+                        <td style="padding: 10px;">
+                            {% if appt.is_urgent %}
+                                <span style="background: #dc2626; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.85rem; font-weight: bold;">URGENT</span>
+                            {% else %}
+                                <span style="background: #3b82f6; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.85rem;">Standard</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="5" style="padding: 15px; text-align: center; color: #64748b;">No appointments scheduled yet.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+            <div>
+                <h3 style="color: #2d1b4e; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">Registered Patients</h3>
+                <ul style="list-style: none; padding: 0;">
+                    {% for p in patients %}
+                    <li style="background: #f8fafc; padding: 10px; margin-bottom: 8px; border-radius: 6px;">
+                        <strong>{{ p.surname }}, {{ p.name }}</strong> - Ailment: {{ p.ailment }} (Tel: {{ p.phoneNumber }})
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: #2d1b4e; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">Available Doctors</h3>
+                <ul style="list-style: none; padding: 0;">
+                    {% for d in doctors %}
+                    <li style="background: #f8fafc; padding: 10px; margin-bottom: 8px; border-radius: 6px;">
+                        <strong>Dr. {{ d.surname }} {{ d.name }}</strong> - Speciality: {{ d.profession }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

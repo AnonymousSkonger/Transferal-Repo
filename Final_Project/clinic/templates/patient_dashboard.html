@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Patient Portal - CareClinic{% endblock title %}
+
+{% block content %}
+<div class="content-container" style="max-width: 800px; margin: 2rem auto;">
+    <div class="card" style="background: rgba(255, 255, 255, 0.98); padding: 2.5rem; border-radius: 16px;">
+        <h2 style="color: #03045e; margin-bottom: 0.25rem;">Patient Appointment Portal</h2>
+        <p style="color: #64748b; margin-bottom: 2rem;">Welcome, <strong>{{ user_name }}</strong></p>
+
+        <h3 style="color: #2d1b4e; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem;">Your Assigned Appointments</h3>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+            {% for appt in appointments %}
+            <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                <p style="margin-bottom: 0.5rem;"><strong>Assigned Doctor:</strong> Dr. {{ appt.doctor_id.surname }} {{ appt.doctor_id.name }} ({{ appt.doctor_id.profession }})</p>
+                <p style="margin-bottom: 0.5rem;"><strong>Expected Arrival Date &amp; Time:</strong> {{ appt.appointment_date }}</p>
+                <p><strong>Your Reported Ailment:</strong> {{ appt.patient_id.ailment }}</p>
+            </div>
+            {% empty %}
+            <p style="color: #64748b; text-align: center; padding: 1rem;">You have no active appointments scheduled at this time.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

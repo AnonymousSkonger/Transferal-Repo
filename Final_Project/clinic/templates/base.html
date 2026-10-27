@@ -18,7 +18,12 @@
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'contact' %}">Contact</a></li>
-                <li><a href="">Log in</a></li>
+                {% if request.session.user_type %}
+                    <li><a href="{% url 'dashboard_redirect' %}">My Dashboard</a></li>
+                    <li><a href="{% url 'logout' %}" style="color: #ef4444;">Logout ({{ request.session.user_name }})</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}" class="btn-login" style="background: #2d1b4e; color: white; padding: 0.5rem 1.25rem; border-radius: 6px;">Login</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>

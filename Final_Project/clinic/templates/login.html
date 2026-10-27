@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - CareClinic{% endblock title %}
+
+{% block content %}
+<div class="content-container" style="max-width: 450px; margin: 3rem auto;">
+    <div class="card" style="background: rgba(255, 255, 255, 0.98); padding: 2.5rem; border-radius: 16px;">
+        <h2 style="color: #03045e; margin-bottom: 0.5rem; text-align: center;">Staff Login</h2>
+        <p style="text-align: center; color: #64748b; margin-bottom: 2rem;">Sign in with your registered receptionist credentials.</p>
+        
+        <form method="post" style="display: flex; flex-direction: column; gap: 1.25rem;">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {% for field in form %}
+                <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                    <label style="font-weight: 600; color: #1e293b; font-size: 0.9rem;">{{ field.label }}</label>
+                    {{ field }}
+                    {% for error in field.errors %}
+                        <span style="color: #ef4444; font-size: 0.8rem;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit" style="background: #2d1b4e; color: white; padding: 0.85rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 1rem;">Login</button>
+        </form>
+    </div>
+</div>
+<style>
+    input { width: 100%; padding: 0.75rem 1rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; background: #f8fafc; }
+</style>
+{% endblock content %}
